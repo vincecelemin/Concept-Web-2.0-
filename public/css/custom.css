@@ -1,0 +1,22 @@
+#main-content {
+    font-family: 'Roboto', sans-serif ;
+}
+
+#navbar {
+    font-family: 'Nunito', sans-serif;
+}
+
+body{
+    background: white;
+}
+
+#drop-logo {
+    height: 250px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+#drop-logo img{
+    height: 100%;
+}

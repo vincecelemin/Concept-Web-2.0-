@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\ShopProfile;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Input;
 
 class RegisterController extends Controller
 {
@@ -28,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -49,9 +51,11 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'store_name' => 'required|string|max:20',
+            'store_description' => 'required|string',
+            'store_location' => 'required|string|min:10'
         ]);
     }
 
@@ -63,10 +67,22 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        $shop_user = new User;
+        $shop_user->email = $data['email'];
+        $shop_user->password = Hash::make($data['password']);
+        $shop_user->user_type = '1';
+        $shop_user->save();
+
+        $shop_profile = new ShopProfile;
+        $shop_profile->shop_name = $data['store_name'];
+        $shop_profile->shop_description = $data['store_description'];
+        $shop_profile->shop_location = $data['store_location'];
+        $shop_profile->user_id = $shop_user->id;
+        if($shop_profile->save()) {
+            return $shop_user;
+        } else {
+            $delete_shop = User::find($shop_user->id);
+            $delete_shop->delete();
+        }
     }
 }
