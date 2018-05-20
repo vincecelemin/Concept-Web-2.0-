@@ -20,7 +20,6 @@ class CreateProductsTable extends Migration
             $table->text('description');
             $table->decimal('price', '7', '2');
             $table->integer('stock');
-            $table->string('logo');
             $table->timestamps();
 
             $table->index('shop_id');

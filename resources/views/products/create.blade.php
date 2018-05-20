@@ -72,6 +72,31 @@
                     </div>
                 </div>
 
+                <div class="form-group">
+                    <label for="product_gender" class="col-form-label pb-0">{{ __('Targeted Gender') }}</label>
+    
+                    <span id="product_gender" class="ml-3 align-middle">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="genderRadio" id="maleRadio" value="male" checked>
+                            <label class="form-check-label" for="maleRadio">Male</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="genderRadio" id="femaleRadio" value="female">
+                            <label class="form-check-label" for="femaleRadio">Female</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="genderRadio" id="unisexRadio" value="unisex">
+                            <label class="form-check-label" for="unisexRadio">Unisex</label>
+                        </div>
+    
+                        @if ($errors->has('product_gender'))
+                            <span class="invalid-feedback">
+                                <strong>{{ $errors->first('product_gender') }}</strong>
+                            </span>
+                        @endif
+                    </span>
+                </div>
+
                 
                 <div class="form-group">
                     <label for="product_logo" class="col-form-label py-0">{{ __('Product Icon') }}</label>

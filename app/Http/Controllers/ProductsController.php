@@ -48,19 +48,22 @@ class ProductsController extends Controller
         $this->validate($request, [
             'product_name' => 'required|string|min:5|max:35',
             'product_description' => 'required|string',
+            'genderRadio' => 'required|in:male,female,unisex',
             'product_price' => 'required|between:0.00,9999999.99',
             'product_stock' => 'required|numeric',
             'product_logo' => 'required|image|max:1999',
             'additional_p' => 'nullable',
             'additional_p.*' => 'image|max:1999'
         ]);
+        $gender_array = array('male' => 'M', 'female' => 'F', 'unisex' => 'U');
 
         $product = new Product;
         $product->name = $request['product_name'];
         $product->description = trim($request['product_description']);
+        $product->gender = $gender_array[$request['genderRadio']];
         $product->price = $request['product_price'];
         $product->stock = $request['product_stock'];
-        $product->shop_id = Auth::user()->shop_profile->id;
+        $product->shop_profile_id = Auth::user()->shop_profile->id;
         $ctr = 0;
 
         if($product->save()){
