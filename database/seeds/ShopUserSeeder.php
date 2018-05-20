@@ -15,7 +15,7 @@ class ShopUserSeeder extends Seeder
     {
         $user = new User;
         $user->email = 'conceptstore@test.biz';
-        $user->password = Hash::make('password');
+        $user->password = hash("sha256", 'password');
         $user->user_type = '1';
         $user->save();
 

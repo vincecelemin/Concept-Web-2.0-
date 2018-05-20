@@ -36,4 +36,8 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    public function setPasswordAttribute($value) {
+        $this->attributes['password'] = hash("sha256", $value);
+    }
 }
