@@ -16,6 +16,10 @@ class CustomUserProvider extends EloquentUserProvider
     */
     public function validateCredentials(UserContract $user, array $credentials)
     {
+        if($user->user_type != '1') {
+            return false;
+        }
+
         $plain = $credentials['password']; // will depend on the name of the input on the login form
         $hashedValue = $user->getAuthPassword();
 
