@@ -1,5 +1,6 @@
 #main-content {
     font-family: 'Roboto', sans-serif ;
+    padding-top: 75px;
 }
 
 #navbar {
@@ -19,4 +20,18 @@ body{
 
 #drop-logo img{
     height: 100%;
+}
+
+#sidenav {
+    border-right: 1px solid rgba(200,200,200,.15);
+    position: fixed;
+}
+
+.list-group-item.active{
+    background-color: #343a40;
+    border-color: #343a40;
+}
+
+.hide {
+    display: none;
 }
