@@ -22,7 +22,7 @@ class CustomerAccountSeeder extends Seeder
         $customer_profile = new CustomerProfile;
         $customer_profile->first_name = 'JC';
         $customer_profile->last_name = 'Cristobal';
-        $customer_profile->gender = 1;
+        $customer_profile->gender = 'M';
         $customer_profile->address = 'Lipa City';
         $customer_profile->user_id = $customer_user->id;
 

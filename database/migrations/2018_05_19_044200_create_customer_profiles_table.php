@@ -17,7 +17,7 @@ class CreateCustomerProfilesTable extends Migration
             $table->increments('id');
             $table->string('first_name');
             $table->string('last_name');
-            $table->addColumn('integer', 'gender', ['length' => 1]);
+            $table->addColumn('string', 'gender', ['length' => 1]);
             $table->string('address');
             $table->timestamps();
 
