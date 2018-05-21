@@ -17,6 +17,7 @@ Inside the web application, customers may register and do their shopping from a 
     - Run ```composer install```
     - Run ```php artisan key:generate```
     - Run ```php artisan migrate```
+    - Run ```php artisan db:seed```
 - In the ```.env``` set the value of the ```DB_DATABASE``` field to ```concept_db```
 - Insert the proper database credentials
 - In the terminal: Run ```php artisan serve```
