@@ -49,6 +49,7 @@ class ProductsController extends Controller
             'product_name' => 'required|string|min:5|max:35',
             'product_description' => 'required|string',
             'genderRadio' => 'required|in:male,female,unisex',
+            'product_category' => 'required|in:shirt,pants,jacket,shoes,accessory',
             'product_price' => 'required|between:0.00,9999999.99',
             'product_stock' => 'required|numeric',
             'product_logo' => 'required|image|max:1999',
@@ -56,11 +57,13 @@ class ProductsController extends Controller
             'additional_p.*' => 'image|max:1999'
         ]);
         $gender_array = array('male' => 'M', 'female' => 'F', 'unisex' => 'U');
+        $categories_array = array('shirt' => '1', 'pants' => '2', 'jacket' => '3', 'shoes' => '4','accessory' => '5');
 
         $product = new Product;
         $product->name = $request['product_name'];
         $product->description = trim($request['product_description']);
         $product->gender = $gender_array[$request['genderRadio']];
+        $product->category = $categories_array[$request['product_category']];
         $product->price = $request['product_price'];
         $product->stock = $request['product_stock'];
         $product->shop_profile_id = Auth::user()->shop_profile->id;
@@ -100,22 +103,21 @@ class ProductsController extends Controller
                         $add_product_image->image_location = $filenameToStore;
                         $add_product_image->product_id = $product->id;
 
-                        if($add_product_image->save()) {
+                        if(!$add_product_image->save()) {
                             $product = Product::find($product->id);
+                            $product->pictures->delete();
                             $product->delete();
-                            
-                            $product_image = ProductPicture::find($product_image->id);
-                            $product_image->delete();
 
                             return Redirect::back()->withErrors(['msg', 'Invalid Files']);
-                            $ctr++;
                         }
+                        $ctr++;
                     }
                 }
 
                 return redirect('/')->with('success', $product->name.' has been added!');
             } else {
                 $product = Product::find($product->id);
+                $product->pictures->delete();
                 $product->delete();
 
                 return Redirect::back()->withErrors(['msg', 'Invalid Files']);

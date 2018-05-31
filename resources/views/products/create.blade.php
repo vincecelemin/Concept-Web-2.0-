@@ -72,7 +72,7 @@
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group mb-2">
                     <label for="product_gender" class="col-form-label pb-0">{{ __('Targeted Gender') }}</label>
     
                     <span id="product_gender" class="ml-3 align-middle">
@@ -95,6 +95,17 @@
                             </span>
                         @endif
                     </span>
+                </div>
+
+                <div class="form-group">
+                    <label for="product_category" class="col-form-label pb-0">{{ __('Category') }}</label>
+                    <select class="custom-select" name="product_category" id="product_category">
+                        <option value="shirt" selected>Shirt</option>
+                        <option value="pants">Pants</option>
+                        <option value="jacket">Jacket</option>
+                        <option value="shoes">Shoes</option>
+                        <option value="accessory">Accessory</option>
+                    </select>
                 </div>
 
                 

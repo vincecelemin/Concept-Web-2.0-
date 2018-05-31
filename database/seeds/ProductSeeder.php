@@ -16,6 +16,7 @@ class ProductSeeder extends Seeder
             'name' => "White Men's Shirt",
             'description' => "A white shirt for men",
             'gender' => 'M',
+            'category' => '1',
             'price' => 199.00,
             'stock' => 10
         ]);
@@ -24,6 +25,7 @@ class ProductSeeder extends Seeder
             'name' => "Blue Longsleeves",
             'description' => "A blue longsleeve shirt for men",
             'gender' => 'M',
+            'category' => '1',
             'price' => 499.00,
             'stock' => 5
         ]);
@@ -32,6 +34,7 @@ class ProductSeeder extends Seeder
             'name' => "White Slippers",
             'description' => "Slippers for home use",
             'gender' => 'U',
+            'category' => '5',
             'price' => 250.00,
             'stock' => 5
         ]);
@@ -40,6 +43,7 @@ class ProductSeeder extends Seeder
             'name' => "Women's Jeans",
             'description' => "Jeans for her",
             'gender' => 'F',
+            'category' => '2',
             'price' => 1299.00,
             'stock' => 5
         ]);
@@ -48,6 +52,7 @@ class ProductSeeder extends Seeder
             'name' => "Stripped Blue Longsleeves",
             'description' => "Blue longsleeves for women",
             'gender' => 'F',
+            'category' => '1',
             'price' => 700.00,
             'stock' => 5
         ]);
