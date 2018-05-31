@@ -27,5 +27,9 @@ class CustomerAccountSeeder extends Seeder
         $customer_profile->user_id = $customer_user->id;
 
         $customer_profile->save();
+
+        DB::table('customer_topups')->insert([
+            'customer_profile_id' => $customer_profile->id
+        ]);
     }
 }
