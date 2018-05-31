@@ -18,7 +18,11 @@ class CreateCustomerCartsTable extends Migration
             $table->addColumn('integer', 'customer_profile_id', ['unsigned' => true, 'length' => 10]);
             $table->addColumn('integer', 'product_id', ['unsigned' => true, 'length' => 10]);
             $table->addColumn('integer', 'quantity', ['length'=>10]);
-
+            $table->addColumn('string', 'isActive', ['length' => 1])->default('1');
+            $table->addColumn('string', 'isProcessed', ['length' => 1])->default('0');
+            $table->timestamp('addedIn');
+            $table->timestamp('processedIn')->nullable();
+            
             $table->index(['customer_profile_id', 'product_id']);
             $table->foreign('customer_profile_id')->references('id')->on('customer_profiles');
             $table->foreign('product_id')->references('id')->on('products');
