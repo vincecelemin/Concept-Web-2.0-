@@ -20,7 +20,7 @@ class CreateDeliveriesTable extends Migration
             $table->string('location');
             $table->string('contact_number');
             $table->addColumn('string', 'payment_type', ['length' => 1]);
-            $table->timestamp('added')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
+            $table->timestamp('added')->nullable();
             $table->timestamp('arrival_date')->nullable();
 
             $table->index('customer_profile_id');
