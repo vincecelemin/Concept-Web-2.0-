@@ -19,6 +19,7 @@
     </div>
 
     <div class="col-md-7 offset-md-4 pl-4" id="content-view">
+        @include('inc.messages')
         <h1>Products <a href="/products/create" class="btn btn-link text-dark p-0 align-bottom"><i class="fas fa-plus fa-xs"></i> New</a></h1>
 
         <div class="container-fluid">
@@ -31,6 +32,7 @@
                         $ctr = 0;
                         ?>
                     @foreach($products as $product)
+                    @if($product->isActive == '1')
                     <div class="card" style="width: 18rem;">
                         <img class="card-img-top container-fluid p-2" src="{{asset('storage/product_images/'.$product->pictures->first()->image_location)}}" alt="{{$product->name}}" style="width: 250px; height: 250px;">
                         <div class="card-body">
@@ -50,6 +52,7 @@
                             break;
                         }
                         ?>
+                    @endif
                     @endforeach
                 </div>
                 

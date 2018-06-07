@@ -147,5 +147,27 @@
                 </div>
             </div>
         </form>
+
+        <div class="text-right">
+            <a href="/products/{{$product->id}}" class="btn btn-link text-muted p-0" data-toggle="modal" data-target="#deleteProductModal">Delete Product</a>
+        </div>
+
+        <div class="modal fade" id="deleteProductModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <h3>Delete Product #{{$product->id}} ?</h3>
+                        <small>{{$product->name}}</small>
+
+                        <form action="/products/{{$product->id}}" method="POST" class="mt-2 text-right">
+                            @method('DELETE')
+                            @csrf
+                            <button type="submit" class="btn btn-outline-danger">Confirm</button>
+                            <button type="button" class="btn btn-dark" data-dismiss="modal">Cancel</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection

@@ -204,7 +204,14 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = Product::find($id);
+        $product->isActive = '0';
+
+        if($product->save()) {
+            return redirect('/')->with('success', 'Product #'.$id.' has been deleted');
+        } else {
+            return redirect('/products/'.$id)->with('error', 'Error deleting product');
+        }
     }
 
     public function restock($id, Request $request) {
@@ -221,6 +228,17 @@ class ProductsController extends Controller
             return redirect('/products/'.$id)->with('success', 'Stock has been updated');
         } else {
             return redirect('/products/'.$id)->with('error', 'Error updating stock');
+        }
+    }
+
+    public function restore($id) {
+        $product = Product::find($id);
+        $product->isActive = '1';
+
+        if($product->save()) {
+            return redirect('/products')->with('success', 'Product #'.$id.' has been restored');
+        } else {
+            return redirect('/products')->with('error', 'Error restoring Product #'.$id);
         }
     }
 }

@@ -15,6 +15,7 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::resource('/products', 'ProductsController');
+Route::post('/products/{id}/restore', 'ProductsController@restore');
 Route::put('/products/{id}/restock', 'ProductsController@restock');
 Route::get('/orders', 'OrdersController@index');
 Route::post('/orderinfo/{id}', 'OrderAjaxController@index');
