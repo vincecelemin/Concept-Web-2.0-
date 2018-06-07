@@ -116,7 +116,7 @@
             @endforeach
             
             @if($ctr == 3)
-            <a href="#" class="text-dark"><h4>See All</h4></a>
+            <a href="/orders" class="text-dark"><h4>See All</h4></a>
             @endif
 
             @else
