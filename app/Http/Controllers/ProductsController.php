@@ -132,8 +132,21 @@ class ProductsController extends Controller
     public function show($id)
     {
         $product = Product::find($id);
+
+        $orders = DB::table('delivery_items')
+        ->join('products', 'delivery_items.product_id', '=', 'products.id')
+        ->join('deliveries', 'delivery_items.delivery_id', '=', 'deliveries.id')
+        ->select('delivery_items.*', 'deliveries.*', 'products.id as product_id', 'products.name', 'delivery_items.id as order_id')
+        ->where('products.id', '=', $id)
+        ->orderBy('delivery_items.id', 'desc')
+        ->get();
+
+        $data = array(
+            'product' => $product,
+            'orders' => $orders
+        );
         
-        return view('products.show')->with('product', $product);
+        return view('products.show')->with($data);
     }
 
     /**
