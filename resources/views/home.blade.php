@@ -12,10 +12,6 @@
                 <a class="list-group-item list-group-item-action" data-toggle="list" href="#list-profile">Sales</a>
             </div>
         </div>
-
-        <div class="text-right">
-            <a href="#" class="btn-link btn text-dark p-0 mt-4"><i class="fas fa-edit"></i> <i>Update your profile</i></a>
-        </div>
     </div>
 
     <div class="col-md-7 offset-md-4 pl-4" id="content-view">
