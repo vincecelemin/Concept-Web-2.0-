@@ -13,6 +13,6 @@
 
 Auth::routes();
 
-Route::get('/', 'ProductsController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 Route::resource('/products', 'ProductsController');
 Route::put('/products/{id}/restock', 'ProductsController@restock');
