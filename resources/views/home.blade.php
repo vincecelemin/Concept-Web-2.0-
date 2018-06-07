@@ -7,8 +7,8 @@
 
         <div class="col-12 text-right p-0">
             <div class="list-group" id="list-tab" role="tablist">
-                <a class="list-group-item list-group-item-action active" data-toggle="list" href="#home-product-container">Products</a>
-                <a class="list-group-item list-group-item-action" data-toggle="list" href="#list-profile">Orders</a>
+                <a class="list-group-item list-group-item-action active" data-toggle="list" href="#" id="products-link" onclick="slideToProducts()">Products</a>
+                <a class="list-group-item list-group-item-action" data-toggle="list" href="#" id="orders-link" onclick="slideToOrders()">Orders</a>
             </div>
         </div>
     </div>
@@ -17,7 +17,7 @@
         @include('inc.messages')
         <h1>Products <a href="/products/create" class="btn btn-link text-dark p-0 align-bottom"><i class="fas fa-plus fa-xs"></i> New</a></h1>
 
-        <div class="container-fluid">
+        <div class="container-fluid" id="product-view">
             @if(count($products) == 0)
                 <h4 class="mt-5">Your product list seems to be empty. You can add some by clicking <a href="products/create" class="text-dark">here!</a></h4>
 
@@ -67,7 +67,7 @@
 
     @endif
         <h1>Orders</h1>
-        <div class="containter-fluid pl-3">
+        <div class="containter-fluid pl-3" id="order-view">
             @if(count($delivery_items) > 0)
             <?php
                 $ctr = 0;
@@ -125,4 +125,5 @@
     </div>
 </div>
 @include('inc.ordermodal')
+@include('inc.linkanimate')
 @endsection
