@@ -14,6 +14,7 @@ class OrdersController extends Controller
         ->join('product_pictures', 'products.id', '=', 'product_pictures.product_id')
         ->join('deliveries', 'delivery_items.delivery_id', '=', 'deliveries.id')
         ->where('product_pictures.image_location', 'like', '%_0%')
+        ->where('products.shop_profile_id', '=', Auth::user()->shop_profile->id)
         ->select('delivery_items.*', 'deliveries.*', 'product_pictures.image_location', 'products.name', 'delivery_items.id as order_id')
         ->orderBy('delivery_items.id', 'desc')
         ->get();

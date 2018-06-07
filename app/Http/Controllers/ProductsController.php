@@ -138,6 +138,7 @@ class ProductsController extends Controller
         ->join('deliveries', 'delivery_items.delivery_id', '=', 'deliveries.id')
         ->select('delivery_items.*', 'deliveries.*', 'products.id as product_id', 'products.name', 'delivery_items.id as order_id')
         ->where('products.id', '=', $id)
+        ->where('products.shop_profile_id', '=', Auth::user()->shop_profile->id)
         ->orderBy('delivery_items.id', 'desc')
         ->get();
 

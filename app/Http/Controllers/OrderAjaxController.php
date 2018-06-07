@@ -15,6 +15,7 @@ class OrderAjaxController extends Controller
         ->join('products', 'delivery_items.product_id', '=', 'products.id')
         ->join('deliveries', 'delivery_items.delivery_id', '=', 'deliveries.id')
         ->where('delivery_items.id', '=', $id)
+        ->where('products.shop_profile_id', '=', Auth::user()->shop_profile->id)
         ->select('delivery_items.*', 'deliveries.*', 'products.id as product_id', 'products.name', 'delivery_items.id as order_id')
         ->orderBy('delivery_items.id', 'desc')
         ->get();
