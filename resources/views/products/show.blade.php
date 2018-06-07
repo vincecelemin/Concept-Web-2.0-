@@ -3,13 +3,7 @@
 @section('content')
 
 <div class="container">
-    @if($errors->any())
-        @foreach($errors->all() as $error)
-            <div class="alert alert-secondary" role="alert">
-                {{$error}}
-            </div>
-        @endforeach
-    @endif
+    @include('inc.messages')
     <div class="row">
         <div class="col-md-3 border-right border-dark p-2">
             <div id="image_carousel" class="carousel slide" data-ride="carousel">
@@ -64,7 +58,7 @@
             <span aria-hidden="true">&times;</span>
             </button>
         </div>
-        <form action="/products/{{$product->id}}" method="POST">
+        <form action="/products/{{$product->id}}/restock" method="POST">
         @method('PUT')
         @csrf
         <div class="modal-body">

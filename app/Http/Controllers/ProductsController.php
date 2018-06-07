@@ -185,4 +185,21 @@ class ProductsController extends Controller
     {
         //
     }
+
+    public function restock($id, Request $request) {
+        $this->validate($request, [
+            'stock_input' => 'numeric|min:0|max:99999'
+        ], [
+            'stock_input.numeric' => 'Enter a valid quantity for product stock.',
+            'stock_input.max' => 'Stock input exceeds limit'
+        ]);
+
+        $product = Product::find($id);
+        $product->stock = $request['stock_input'];
+        if($product->save()) {
+            return redirect('/products/'.$id)->with('success', 'Stock has been updated');
+        } else {
+            return redirect('/products/'.$id)->with('error', 'Error updating stock');
+        }
+    }
 }
