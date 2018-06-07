@@ -160,7 +160,9 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = Product::find($id);
+        
+        return view('products.edit')->with('product', $product);
     }
 
     /**
@@ -172,7 +174,29 @@ class ProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'product_name' => 'required|string|min:5|max:35',
+            'product_description' => 'required|string',
+            'genderRadio' => 'required|in:male,female,unisex',
+            'product_category' => 'required|in:shirt,pants,jacket,shoes,accessory',
+            'product_price' => 'required|between:0.00,9999999.99',
+            'product_stock' => 'required|numeric'
+        ]);
+        $gender_array = array('male' => 'M', 'female' => 'F', 'unisex' => 'U');
+        $categories_array = array('shirt' => '1', 'pants' => '2', 'jacket' => '3', 'shoes' => '4','accessory' => '5');
+
+        $product = Product::find($id);
+        $product->name = $request['product_name'];
+        $product->description = trim($request['product_description']);
+        $product->gender = $gender_array[$request['genderRadio']];
+        $product->category = $categories_array[$request['product_category']];
+        $product->price = $request['product_price'];
+        $product->stock = $request['product_stock'];
+        if($product->save()) {
+            return redirect('products/'.$id)->with('success', 'Product #'.$id.' has been updated.');
+        } else {
+            return redirect('products/'.$id)->with('error', 'Error updating product #'.$id);
+        }
     }
 
     /**
