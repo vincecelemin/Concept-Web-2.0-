@@ -33,9 +33,10 @@
 
         <div class="col-md-9">
             <h1 class="mb-1">{{$product->name}}</h1>
-            <h6 class="mt-0">Created {{$product->created_at}}</h6>
+            <h6 class="my-0">Added {{$product->created_at}}</h6>
+            <small class="text-muted">Product #{{$product->id}}</small>
 
-            <div>
+            <div class="mt-2">
                 {{$product->description}}
             </div>
         </div>
