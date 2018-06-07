@@ -33,7 +33,7 @@ class HomeController extends Controller
         ->join('product_pictures', 'products.id', '=', 'product_pictures.product_id')
         ->where('products.shop_profile_id', '=', Auth::user()->shop_profile->id)
         ->where('product_pictures.image_location', 'like', '%_0%')
-        ->select('products.name', 'products.id', 'delivery_items.*', 'deliveries.added', 'deliveries.arrival_date', 'deliveries.contact_person', 'product_pictures.image_location')
+        ->select('products.name', 'products.id', 'delivery_items.*', 'deliveries.added', 'deliveries.arrival_date', 'deliveries.contact_person', 'product_pictures.image_location', 'delivery_items.id as order_id')
         ->orderBy('delivery_items.id', 'desc')
         ->get();
 

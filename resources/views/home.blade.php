@@ -102,7 +102,7 @@
                         </div>
 
                         <div class="col-2">
-                            <button class="btn btn-dark">Details</button>
+                            <button class="btn btn-dark" onclick="getOrder({{$delivery->order_id}})"  data-toggle="modal" data-target="#orderModal">Details</button>
                         </div>
                     </div>
                 </div>
@@ -126,4 +126,5 @@
         </div>
     </div>
 </div>
+@include('inc.ordermodal')
 @endsection
