@@ -42,6 +42,10 @@
                 </div>
 
                 <div>
+                    <div id="orderPaymentTypeDiv">
+                        <small>Payment Type</small>
+                        <h4 id="orderPaymentType"></h4>
+                    </div>
                     <div>
                         <small>Status</small>
                         <h4 id="orderStatus"></h4>
@@ -74,7 +78,7 @@
                 },
                 success:function(data){
                     order_obj = data.order;
-                    
+                    console.log(data);
                     $("#orderModalLabel").html('Details for Order #' + order_obj[0].order_id);
                     $("#orderProdName").html(order_obj[0].name);
                     $("#orderQuantity").html(order_obj[0].quantity + ' piece/s');
@@ -93,6 +97,8 @@
                             $("#orderStatus").html("On Transit");
                             $("#orderArrivalDiv").removeClass("d-none");
                             $("#orderArrivalDiv").addClass("d-block");
+                            $("#orderPaymentTypeDiv").addClass("d-block");
+                            $("#orderPaymentTypeDiv").removeClass("d-none");
                             $("#orderArrivalHeading").html('Estimated Delivery Date');
                             $("#orderArrival").html(order_obj[0].arrival_date.substring(0, 10));
                             break;
@@ -104,6 +110,8 @@
                             $("#orderStatus").html("Delivered");
                             $("#orderStatus").removeClass("d-none");
                             $("#orderArrivalDiv").addClass("d-block");
+                            $("#orderPaymentTypeDiv").addClass("d-block");
+                            $("#orderPaymentTypeDiv").removeClass("d-none");
                             $("#orderArrivalHeading").html('Delivered On');
                             $("#orderArrival").html(order_obj[0].arrival_date);
                             break;
@@ -114,7 +122,18 @@
                             $("#orderStatus").html("Cancelled");
                             $("#orderArrivalDiv").removeClass("d-block");
                             $("#orderArrivalDiv").addClass("d-none");
+                            $("#orderPaymentTypeDiv").removeClass("d-block");
+                            $("#orderPaymentTypeDiv").addClass("d-none");
                             break;
+                    }
+
+                    switch(order_obj[0].payment_type) {
+                        case "1":
+                            $("#orderPaymentType").html("Cash On Delivery")
+                        break;
+                        case "0":
+                            $("#orderPaymentType").html("Paid with Load")
+                        break;
                     }
                 }
             });
