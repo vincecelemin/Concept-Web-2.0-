@@ -41,3 +41,9 @@ body{
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 8px;
 }
+
+#products-page-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 8px;
+}

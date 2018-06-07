@@ -54,7 +54,7 @@
                 </div>
                 
                 @if($ctr == 6)
-                    <a href="#" class="text-dark m-2"><h4>See All</h4></a>
+                    <a href="/products" class="text-dark m-2 text-right"><h4>See All</h4></a>
                 @endif
             @endif
         </div>
