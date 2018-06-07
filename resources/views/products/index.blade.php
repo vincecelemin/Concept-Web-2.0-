@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         @include('inc.messages')
-        <h1>Your Products</h1>
+        <h1>Your Products <a href="/products/create" class="btn btn-link text-dark p-0 align-bottom"><i class="fas fa-plus fa-xs"></i> New</a></h1>
         @if(count($products) == 0)
             <h4 class="mt-5">Your product list seems to be empty. You can add some by clicking <a href="products/create" class="text-dark">here!</a></h4>
 
