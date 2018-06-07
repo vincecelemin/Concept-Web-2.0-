@@ -9,7 +9,6 @@
             <div class="list-group" id="list-tab" role="tablist">
                 <a class="list-group-item list-group-item-action active" data-toggle="list" href="#home-product-container">Products</a>
                 <a class="list-group-item list-group-item-action" data-toggle="list" href="#list-profile">Orders</a>
-                <a class="list-group-item list-group-item-action" data-toggle="list" href="#list-profile">Sales</a>
             </div>
         </div>
     </div>
