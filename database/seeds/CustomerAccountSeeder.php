@@ -24,6 +24,7 @@ class CustomerAccountSeeder extends Seeder
         $customer_profile->last_name = 'Cristobal';
         $customer_profile->gender = 'M';
         $customer_profile->address = 'Lipa City';
+        $customer_profile->contact_number = '09151234567';
         $customer_profile->user_id = $customer_user->id;
 
         $customer_profile->save();
